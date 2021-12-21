@@ -15,6 +15,8 @@ library(viridis)
 source("functions/scale_fill_fermenter_custom.R")
 source("http://www.math.mcmaster.ca/bolker/R/misc/legendx.R")
 
+load("C:/Users/pc/Dropbox/rangeHorizonsData/Andreas_data/Grid/OceanGrid_without_central_america.rda") # 
+load("C:/Users/pc/Dropbox/rangeHorizonsData/Andreas_data/Grid/BehrmannMeterGrid_WGS84_land.rda") 
 
 models <- c("CanESM5", "CNRM-ESM2-1","GISS-E2-1-G","IPSL-CM6A-LR","MRI-ESM2-0")
 
@@ -59,8 +61,7 @@ terrestrial <- terrestrial.tmp %>% filter(max.exp.over.abs >= 5)
 marine <- marine.tmp %>% filter(max.exp.over.abs >= 5)
 
 
-load("C:/Users/pc/Dropbox/rangeHorizonsData/Andreas_data/Grid/OceanGrid_without_central_america.rda") # 
-load("C:/Users/pc/Dropbox/rangeHorizonsData/Andreas_data/Grid/BehrmannMeterGrid_WGS84_land.rda") # 
+ # 
 OceanGridMag <- OceanGrid
 griddedDomainMag <- griddedDomain
 
