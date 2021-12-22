@@ -61,7 +61,7 @@ terrestrial <- terrestrial.tmp %>% filter(max.exp.over.abs >= 5)
 marine <- marine.tmp %>% filter(max.exp.over.abs >= 5)
 
 
- # 
+ 
 OceanGridMag <- OceanGrid
 griddedDomainMag <- griddedDomain
 
@@ -472,9 +472,12 @@ time.2models <- projectRaster(time.2c.nodexp.2models, crs=robin.proj, over=T, me
 
 time.r <- raster::merge(time.4models, time.2models)
 
+bgpoly <- st_buffer(bbox, 5000000)
+bgpoly <- st_difference(bgpoly, bbox)
+
 
 jpeg("../../rangeHorizonsData/Andreas_data/Overshoot/figures/Fig. 4.jpg",
-     height = 5, width = 10, units = "in", res=1000)
+     height = 5, width = 10, units = "in", res=500)
 par(xpd=T, mar=c(4,2,1,0))
 
 negative <- viridis(4, option = "A", begin=0.2, end=0.95)[1]
@@ -507,7 +510,7 @@ fig.empirical<- ggarrange(max.exp.over.gg, timing.exp.over.gg,NULL,NULL, final.e
                           hjust=0.3, vjust = -1,heights = c(1, 0.1, 1,0.1,1)) +
   theme(plot.margin = margin(1,1,1,1, "cm")) 
 
-ggexport(fig.empirical, width = 5500*2, height = 6000*2, res = 500*2,
+ggexport(fig.empirical, width = 5500, height = 6000, res = 500,
          filename = "../../rangeHorizonsData/Andreas_data/Overshoot/figures/Fig. 3.jpg")
 
 
